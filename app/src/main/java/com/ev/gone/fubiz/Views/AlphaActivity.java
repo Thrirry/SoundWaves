@@ -350,7 +350,12 @@ public class AlphaActivity extends AppCompatActivity {
 //            }
 //        });
 
+
+
+
     }
+
+
 
     private void startStop() {
 
@@ -476,7 +481,15 @@ public class AlphaActivity extends AppCompatActivity {
         }else {
             showToast();
         }
+
     }
+
+
+
+
+
+
+
 
 
     public void showToast() {
