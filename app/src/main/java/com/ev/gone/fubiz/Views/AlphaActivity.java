@@ -176,6 +176,8 @@ public class AlphaActivity extends AppCompatActivity {
         });
 
 
+
+
         time_setting = (Button) findViewById(R.id.time_setting);
         time_setting.setOnClickListener(new View.OnClickListener() {
 
@@ -183,12 +185,18 @@ public class AlphaActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent redirect = new Intent(AlphaActivity.this, SettingCountdownActivity.class);
-                startActivity(redirect);
-//                Intent myintent = new Intent(AlphaActivity.this, SettingCountdownActivity.class);
-//                startActivityForResult(myintent, 1001);
+//                timeCountInMilliSeconds
+//                stopCountDownTimer();
+                startActivityForResult(redirect,2);
+
 
             }
         });
+
+
+
+
+
 
         alpha_ic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,14 +334,11 @@ public class AlphaActivity extends AppCompatActivity {
 
         });
 
-
         ButterKnife.bind(this);
 
         //call to initialize the timer values
         setTimerValues();
         textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
-
-
         countdown_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -341,21 +346,7 @@ public class AlphaActivity extends AppCompatActivity {
             }
         });
 
-//        btnSetting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(AlphaActivity.this, SettingCountdownActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-
-
-
-
     }
-
-
 
     private void startStop() {
 
@@ -371,7 +362,6 @@ public class AlphaActivity extends AppCompatActivity {
             stopCountDownTimer();
             countdown_btn.setBackgroundResource(R.mipmap.countdownic);
         }
-
     }
 
     private void startCountDownTimer() {
@@ -410,7 +400,6 @@ public class AlphaActivity extends AppCompatActivity {
                 smoothAnimation.end();
                 countdown_btn.setBackgroundResource(R.mipmap.countdownic);
 
-
             }
         }.start();
         smoothAnimation.start();
@@ -425,7 +414,6 @@ public class AlphaActivity extends AppCompatActivity {
     private void setProgressBarValues() {
         progressBarCircle.setMax((int) (timeCountInMilliSeconds / 10));
         progressBarCircle.setProgress((int) (timeCountInMilliSeconds / 10));
-        System.out.println("progres: " + (timeCountInMilliSeconds / 10));
     }
 
     private String hmsTimeFormatter(long milliSeconds) {
@@ -439,7 +427,7 @@ public class AlphaActivity extends AppCompatActivity {
     private void setTimerValues() {
         Intent intent = getIntent();
         // assigning values after converting to milliseconds
-        timeCountInMilliSeconds = intent.getLongExtra("minutes", 10) * 2 * 1000;
+        timeCountInMilliSeconds = intent.getLongExtra("minutes", 1) * 60 * 1000;
     }
 
 
@@ -448,12 +436,21 @@ public class AlphaActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
-            if (requestCode == 1001){
-                mPlayerAlpha.stop();
-                mPlayers.stop();
-                mPlayerOcean.stop();
-
+        if (requestCode == 2) {
+//            if (data == null) {
+//                timeCountInMilliSeconds = 0;
+//            } else {
+            try {
+                timeCountInMilliSeconds = data.getLongExtra("minutes", 1) * 60 * 1000;
+                textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
+                if (countDownTimer != null) {
+                    stopCountDownTimer();
+                }
+                status = TimerStatus.STOPPED;
+                countdown_btn.setBackgroundResource(R.mipmap.countdownic);
+                progressBarCircle.setProgress(0);
+            }catch (Exception ex){
+                System.out.println("Error: " + ex.getMessage());
             }
         }
     }
@@ -471,26 +468,13 @@ public class AlphaActivity extends AppCompatActivity {
 
             if (wifiConnected){
 
-
             }else{
 
-
             }
-
-
         }else {
             showToast();
         }
-
     }
-
-
-
-
-
-
-
-
 
     public void showToast() {
         // Set the toast and duration
@@ -507,11 +491,8 @@ public class AlphaActivity extends AppCompatActivity {
                 mToastToShow.cancel();
             }
         };
-
         // Show the toast and starts the countdown
         mToastToShow.show();
         toastCountDown.start();
     }
-
-
 }

@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 import com.ev.gone.fubiz.R;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -27,6 +25,9 @@ public class SettingCountdownActivity extends AppCompatActivity {
     @BindView(R.id.npMinutes)
     NumberPicker npMinutes = null;
 
+    Button back_to_alpha_main;
+
+
 
     private long minutes;
 
@@ -40,6 +41,7 @@ public class SettingCountdownActivity extends AppCompatActivity {
         npHours.setMaxValue(12);
         npHours.setMinValue(0);
         npHours.setWrapSelectorWheel(false);
+
 
 //Set values picker minutes
         npMinutes.setMaxValue(60);
@@ -62,5 +64,19 @@ public class SettingCountdownActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        back_to_alpha_main = (Button) findViewById(R.id.back_to_alpha_main);
+        back_to_alpha_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent redirect_one = new Intent(SettingCountdownActivity.this, AlphaActivity.class);
+                startActivity(redirect_one);
+
+
+            }
+        });
+
     }
 }

@@ -29,20 +29,12 @@ public class AlphaSettingActivity extends AppCompatActivity {
     String settimes[] = new String[]{"5 mins", "10 mins", "15 mins", "20 mins", "25 mins", "30 mins", "35 mins", "40 mins", "45 mins", "50 mins", "55 mins", "60 mins"};
 
     View alpha_btn;
-    View setting_time;
-
     Button backto_alpha_main;
-
     DatabaseReference mData;
-    String mDatase[];
-
 
     // data
     ArrayList<String> ListSong;
-    ArrayAdapter data_adapter = null;
-
     ArrayList<String> ListUrl;
-
     ListViewAdapter data_adapter_test;
 
 
@@ -52,10 +44,8 @@ public class AlphaSettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alpha_setting);
 
-
         // mapping with data
         mData = FirebaseDatabase.getInstance().getReference();
-
 
 
         SongManager.getInstance().load();
@@ -65,10 +55,6 @@ public class AlphaSettingActivity extends AppCompatActivity {
 
         ListSong = new ArrayList<String>();
         ListUrl = new ArrayList<String>();
-
-//        data_adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ListSong);
-//        lvsong.setAdapter(data_adapter);
-
 
         data_adapter_test = new ListViewAdapter(AlphaSettingActivity.this, ListSong);
         lvsong.setAdapter(data_adapter_test);
@@ -84,36 +70,25 @@ public class AlphaSettingActivity extends AppCompatActivity {
 
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
                         Songs info = dataSnapshot.getValue(Songs.class);
                         ListSong.add(info.name);
                         ListUrl.add(info.url);
                         data_adapter_test.notifyDataSetChanged();
-
                     }
-
                     @Override
                     public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                     }
-
                     @Override
                     public void onChildRemoved(DataSnapshot dataSnapshot) {
-
                     }
-
                     @Override
                     public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
-
-
-
             }
         });
 
@@ -126,18 +101,13 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 if (position == 0){
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(0).toString());
-
-
                     myIntent.putExtra("push_url", ListUrl.get(0));
                     startActivityForResult(myIntent, 0);
-
                 }
 
                 if (position == 1){
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(1).toString());
-
-
                     myIntent.putExtra("push_url", ListUrl.get(1));
                     startActivityForResult(myIntent, 1);
                 }
@@ -146,26 +116,12 @@ public class AlphaSettingActivity extends AppCompatActivity {
                     Intent myIntent = new Intent(view.getContext(), AlphaActivity.class);
                     myIntent.putExtra("push_song", lvsong.getItemAtPosition(2).toString());
 
-
                     myIntent.putExtra("push_url", ListUrl.get(2));
                     startActivityForResult(myIntent, 2);
                 }
 
             }
         });
-
-//        setting_time = (View) findViewById(R.id.yanging_setting);
-//        setting_time.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ListView settime = (ListView) findViewById(R.id.listview);
-//                adapter_countdown = new ListViewAdapter(AlphaSettingActivity.this, settimes);
-//                settime.setTextFilterEnabled(true);
-//                settime.setAdapter(adapter_countdown);
-//            }
-//        });
-
 
         backto_alpha_main = (Button) findViewById(R.id.backto_alpha_main);
         backto_alpha_main.setOnClickListener(new View.OnClickListener() {
