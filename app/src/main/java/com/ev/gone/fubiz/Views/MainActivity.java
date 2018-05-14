@@ -14,16 +14,25 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 public class MainActivity extends AppCompatActivity{
 
     CircleMenu circleMenu;
-    CircleMenu circleMenuSe;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        findViewById(R.id.btn_play_again).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // We normally won't show the welcome slider again in real app
+                // but this is for testing
+                LaunchManager LaunchManager = new LaunchManager(getApplicationContext());
+                // make first time launch TRUE
+                LaunchManager.setFirstTimeLaunch(true);
+                startActivity(new Intent(MainActivity.this, SliderActivity.class));
+                finish();
+            }
+        });
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
 

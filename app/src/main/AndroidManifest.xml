@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Views.Loading"
+            android:name=".Views.SliderActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,14 +22,21 @@
             android:name=".Views.AlphaActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Views.Loading"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Views.AlphaSettingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Views.CountdownActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".Views.MainActivity" />
-        <activity android:name=".Views.SettingCountdownActivity"></activity>
+        <activity android:name=".Views.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Views.SettingCountdownActivity"
+            android:screenOrientation="portrait" />
+        <!-- <activity android:name=".Views.SliderActivity"></activity> -->
+        <activity android:name=".Views.AlphaActivityOffline"
+            android:screenOrientation="portrait" ></activity>
     </application>
 
 </manifest>

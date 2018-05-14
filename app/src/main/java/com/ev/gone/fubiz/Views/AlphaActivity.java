@@ -37,6 +37,8 @@ public class AlphaActivity extends AppCompatActivity {
     Button setting;
     Button time_setting;
 
+    Button off_line;
+
     Button alpha_ic;
     Button volume_ocean;
     boolean isPlay = false;
@@ -193,6 +195,20 @@ public class AlphaActivity extends AppCompatActivity {
             }
         });
 
+        off_line = (Button) findViewById(R.id.no_wifi);
+        off_line.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Intent redirect = new Intent(AlphaActivity.this, AlphaActivityOffline.class);
+//                timeCountInMilliSeconds
+//                stopCountDownTimer();
+                startActivityForResult(redirect,2);
+
+
+            }
+        });
 
 
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="@drawable/backgroundcyan"
-    tools:context="com.ev.gone.fubiz.Views.AlphaActivity">
+    tools:context="com.ev.gone.fubiz.Views.AlphaActivityOffline">
 
 
     <LinearLayout
@@ -70,12 +70,12 @@
                         android:background="@mipmap/time_setting_ic" />
 
                     <Button
-                        android:id="@+id/no_wifi"
+                        android:id="@+id/on_wifi"
                         android:layout_width="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_height="30dp"
                         android:layout_toRightOf="@+id/time_setting"
-                        android:background="@drawable/no_wifi" />
+                        android:background="@drawable/on_wifi" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -185,18 +185,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <ProgressBar
-                android:id="@+id/progressBarCircle"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/view_circle_fin"
-                android:indeterminate="false"
-                android:indeterminateDrawable="@drawable/view_circle_in_progress"
-                android:max="100"
-                android:progressDrawable="@drawable/view_circle_in_progress"
-                android:rotation="-90"/>
+                <ProgressBar
+                    android:id="@+id/progressBarCircle"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/view_circle_fin"
+                    android:indeterminate="false"
+                    android:indeterminateDrawable="@drawable/view_circle_in_progress"
+                    android:max="100"
+                    android:progressDrawable="@drawable/view_circle_in_progress"
+                    android:rotation="-90"/>
 
             </RelativeLayout>
 
