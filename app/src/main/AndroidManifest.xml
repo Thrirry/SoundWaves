@@ -42,11 +42,13 @@
             android:name=".Views.SettingCountdownActivity"
             android:screenOrientation="portrait" />
         <!-- <activity android:name=".Views.SliderActivity"></activity> -->
-        <activity
-            android:name=".Views.AlphaActivityOffline"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Views.AlphaSettingActivityOffiline" />
-        <activity android:name=".Views.ListSongOfflineActivity"></activity>
+
+
+        <!--<activity-->
+            <!--android:name=".Views.AlphaActivityOffline"-->
+            <!--android:screenOrientation="portrait" />-->
+        <!--<activity android:name=".Views.AlphaSettingActivityOffiline" />-->
+        <!--<activity android:name=".Views.ListSongOfflineActivity"></activity>-->
     </application>
 
 </manifest>

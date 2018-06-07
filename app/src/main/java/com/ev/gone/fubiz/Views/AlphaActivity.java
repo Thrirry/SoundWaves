@@ -135,23 +135,6 @@ public class AlphaActivity extends AppCompatActivity {
         Uri uri = Uri.parse(mySongs.get(i).toString());
 
 
-
-       /* if (str == null ){
-
-            mPlayers = MediaPlayer.create(this, R.raw.clairdelune);
-
-        }else {
-
-            try{
-
-                mPlayers.setDataSource(str);
-                mPlayers.prepare();
-
-            }catch (IOException e){
-                Log.v("lost data", e.getMessage());
-            }
-
-        }*/
         if (str != null){
             try{
 
@@ -217,32 +200,22 @@ public class AlphaActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent redirect = new Intent(AlphaActivity.this, SettingCountdownActivity.class);
-//                timeCountInMilliSeconds
-//                stopCountDownTimer();
                 startActivityForResult(redirect,2);
 
 
             }
         });
 
-        off_line = (Button) findViewById(R.id.no_wifi);
-        off_line.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Intent redirect = new Intent(AlphaActivity.this, AlphaActivityOffline.class);
-//                timeCountInMilliSeconds
-//                stopCountDownTimer();
-                startActivityForResult(redirect,2);
-
-
-            }
-        });
-
-
-
-
+//        off_line = (Button) findViewById(R.id.no_wifi);
+//        off_line.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent redirect = new Intent(AlphaActivity.this, AlphaActivityOffline.class);
+//                startActivityForResult(redirect,2);
+//            }
+//        });
 
         alpha_ic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,10 +241,6 @@ public class AlphaActivity extends AppCompatActivity {
         budhist_ic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-
 
                 if (isPiano && isPiano_nd && isPiano_rd) {
                     v.setBackgroundResource(R.mipmap.volume_piano_max);
@@ -348,19 +317,15 @@ public class AlphaActivity extends AppCompatActivity {
 
                 } else if (isOcean && !isOcean_nd && isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_middle);
-//                  isOcean_nd = isOcean_nd;
                     isOcean = !isOcean;
                     isOcean_rd = !isOcean_rd;
 
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 0.7, (float) 0.7);
 
                 } else if (isOcean && !isOcean_nd && !isOcean_rd) {
                     v.setBackgroundResource(R.mipmap.volume_ocean_max);
                     isOcean_nd = !isOcean_nd;
-//                isOcean_rd =!isOcean_rd;
 
-//                    mPlayerOcean.start();
                     mPlayerOcean.setVolume((float) 1.0, (float) 1.0);
 
                 } else if (!isOcean && isOcean_nd && !isOcean_rd) {
@@ -486,9 +451,7 @@ public class AlphaActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2) {
-//            if (data == null) {
-//                timeCountInMilliSeconds = 0;
-//            } else {
+
             try {
                 timeCountInMilliSeconds = data.getLongExtra("minutes", 1) * 60 * 1000;
                 textViewTime.setText(hmsTimeFormatter(timeCountInMilliSeconds));
