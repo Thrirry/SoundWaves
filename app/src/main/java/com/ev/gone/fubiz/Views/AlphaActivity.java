@@ -121,32 +121,32 @@ public class AlphaActivity extends AppCompatActivity {
         tvTest = findViewById(R.id.tvTest_alpha);
         mySongs = new ArrayList<File>();
 
-        final ArrayList<File> mySongs = findSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
-        items = new String[mySongs.size()];
+//        final ArrayList<File> mySongs = findSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
+//        items = new String[mySongs.size()];
 
-        Intent intent = getIntent();
-
-        tvTest.setText(intent.getStringExtra("push_song"));
-
-
-        final String str  = intent.getStringExtra("push_url");
-        this.mySongs = (ArrayList) intent.getParcelableArrayListExtra("song_list");
-        i =  intent.getIntExtra("pos", 0);
-        Uri uri = Uri.parse(mySongs.get(i).toString());
-
-
-        if (str != null){
-            try{
-
-                mPlayers.setDataSource(str);
-                mPlayers.prepare();
-
-            }catch (IOException e){
-                Log.v("lost data", e.getMessage());
-            }
-        }else {
-            mPlayers = MediaPlayer.create(getApplicationContext(), uri);
-        }
+//        Intent intent = getIntent();
+//
+//        tvTest.setText(intent.getStringExtra("push_song"));
+//
+//
+//        final String str  = intent.getStringExtra("push_url");
+//        this.mySongs = (ArrayList) intent.getParcelableArrayListExtra("song_list");
+//        i =  intent.getIntExtra("pos", 0);
+//        Uri uri = Uri.parse(mySongs.get(i).toString());
+//
+//
+//        if (str != null){
+//            try{
+//
+//                mPlayers.setDataSource(str);
+//                mPlayers.prepare();
+//
+//            }catch (IOException e){
+//                Log.v("lost data", e.getMessage());
+//            }
+//        }else {
+//            mPlayers = MediaPlayer.create(getApplicationContext(), uri);
+//        }
 
 
         alpha_ic = (Button) findViewById(R.id.alpha_ic);
@@ -508,20 +508,20 @@ public class AlphaActivity extends AppCompatActivity {
         toastCountDown.start();
     }
 
-    public ArrayList<File> findSongs(File root) {
-        ArrayList<File> a = new ArrayList<File>();
-        File[] files = root.listFiles();
-        for (File singleFile : files) {
-            if (singleFile.isDirectory() && !singleFile.isHidden()) {
-
-                a.addAll(findSongs(singleFile));
-
-            } else {
-                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
-                    a.add(singleFile);
-                }
-            }
-        }
-        return a;
-    }
+//    public ArrayList<File> findSongs(File root) {
+//        ArrayList<File> a = new ArrayList<File>();
+//        File[] files = root.listFiles();
+//        for (File singleFile : files) {
+//            if (singleFile.isDirectory() && !singleFile.isHidden()) {
+//
+//                a.addAll(findSongs(singleFile));
+//
+//            } else {
+//                if (singleFile.getName().endsWith(".mp3") || singleFile.getName().endsWith(".wav")) {
+//                    a.add(singleFile);
+//                }
+//            }
+//        }
+//        return a;
+//    }
 }

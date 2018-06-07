@@ -131,10 +131,7 @@ public class AlphaSettingActivity extends AppCompatActivity {
                 Intent redirect_one = new Intent(AlphaSettingActivity.this, AlphaActivity.class);
                 startActivity(redirect_one);
 
-
             }
         });
-
-
     }
 }

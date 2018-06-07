@@ -176,9 +176,6 @@ public class AlphaSettingActivityOffiline extends AppCompatActivity {
             Log.e("MainActivity", "File Created");
         }
 
-
-        //Close all connection after doing task
-
     }
 
 }

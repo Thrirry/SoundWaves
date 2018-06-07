@@ -79,21 +79,6 @@ public class MainActivity extends AppCompatActivity{
                                              }
 
         );
-//
-//        circleMenu.setOnMenuStatusChangeListener(new OnMenuStatusChangeListener() {
-//
-//                                                     @Override
-//                                                     public void onMenuOpened() {
-//                                                         Toast.makeText(MainActivity.this, "Menu Opend", Toast.LENGTH_SHORT).show();
-//                                                     }
-//
-//                                                     @Override
-//                                                     public void onMenuClosed() {
-//                                                         Toast.makeText(MainActivity.this, "Menu Closed", Toast.LENGTH_SHORT).show();
-//                                                     }
-//                                                 }
-//        );
-
 
     }
 
